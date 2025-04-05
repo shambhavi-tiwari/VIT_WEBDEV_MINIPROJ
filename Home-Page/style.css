@@ -1,24 +1,126 @@
 @import url(../CSS/reset.css);
 @import url(../CSS/Utiles.css);
 
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap');
+
+
+.buy-before {
+    font-family: 'Alegreya', serif !important;
+    font-weight: 700 !important; /* Bold */
+    color: #4c322d !important; /* Override other colors */
+    text-align: center;
+}
+
+.explore-genres {
+    font-family: 'Alegreya', serif !important;
+    font-weight: 700 !important; /* Bold */
+    color: #4c322d !important;
+    text-align: center;
+}
+
+/* Apply Alegreya to all text */
+body {
+    font-family: 'Alegreya', serif !important;
+    background: #ecdfd1;
+}
+
+/* Styling only for specific headings */
+.best-of-books,
+.buy-before,
+.explore-genres {
+    font-family: 'Alegreya', serif !important;
+    font-weight: 700 !important; /* Bold */
+    color: #4c322d !important; /* Updated color */
+    text-align: center;
+}
+
+/* Styling for "Best of Books and Pages" */
+.in-img-text h1 {
+    color: rgba(255, 255, 255, 0.895);
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+/* Targeting only "Welcome to Books and Pages!" */
+.in-img-text h1.special-title {
+    font-size: 90px; /* Set size to 90px */
+}
+
+.in-img-text h1:hover {
+    transform: scale(1.05);
+}
+
+
+/* Category Buttons */
+.categorie a {
+    background-color: #3d251e !important;
+    color: white !important;
+    border-color: #2b1a14 !important;
+    font-family: 'Alegreya', serif !important;
+}
+
+.categorie a:hover {
+    background-color: #5a3a2e !important;
+}
+
+
+.in-img-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    text-align: center; /* Ensures text is centered */
+    width: 100%;
+    height: 100%;
+    padding: 2rem; /* Adds some spacing */
+}
+
+
+h1, h3 {
+    font-family: 'Alegreya', serif !important;
+}
+
+
+.second-navbar-bi-list-clicked {
+    background-color: #3d251e !important; /* Change navbar background */
+}
+
+.categorie a {
+    background-color: #3d251e !important; /* Change button background */
+    color: white !important; /* Ensure text is visible */
+    border-color: #2b1a14 !important; /* Slight contrast border */
+}
+
+.categorie a:hover {
+    background-color: #5a3a2e !important; /* Slightly lighter brown on hover */
+}
+
 .row-2 {
-    background: url(../IMG/deafults/bookcase-img.jpg.jpg) center no-repeat;
+    background: url(../IMG/deafults/bookshelf-image.jpg) center no-repeat;
     background-size: cover;
 }
 
-.in-img-text h1, .in-img-text h3 {
+.in-img-text h1 {
     color: rgba(255, 255, 255, 0.895);
-    transition: all ease .3s;
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
 }
 
-.in-img-text h1:hover , .in-img-text h3:hover {
-    color: #dc3545;
+.in-img-text h1:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.in-img-text h3 {
+    color: rgba(255, 255, 255, 0.895);
+    /* No zoom effect on h3 */
 }
 
 
-.nav-bar  {
-    height: 4.7rem;
+.navbar {
+    height: 50px; /* Adjust as needed */
+    padding: 5px 0; /* Reduce padding to make it slimmer */
 }
+
 
 .nav-bar li {
     transition: all ease .2s;
@@ -58,7 +160,7 @@ h2::after {
 	margin: 0 auto;
 	height: .4rem;
 	border-radius: .1rem;
-	background: #dc3545;
+	background: #3a5a40;
 	left: 0;
 	right: 0;
 	bottom: -2.0rem;
@@ -107,7 +209,7 @@ h2::after {
 
 .carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
 	color: #fff;
-	background: #dc3545;
+	background: #3a5a40;
 	box-shadow: none;
 }
 .carousel .thumb-content .btn i {
@@ -126,13 +228,13 @@ h2::after {
 .carousel-control-prev, .carousel-control-next {
 	height: 4.4rem;
 	width: 4.0rem;
-	background: #dc3545;	
+	background: #3a5a40;	
 	margin: auto 0;
 	border-radius: .4rem;
 	opacity: 0.8;
 }
 .carousel-control-prev:hover, .carousel-control-next:hover {
-	background: #dc3545;
+	background: #3a5a40;
 	opacity: 1;
 }
 .carousel-control-prev i, .carousel-control-next i {
@@ -191,18 +293,18 @@ h2::after {
 
 
 body {
-    background: #fbfbfd;
+    background: #ecdfd1;
 }
 
 .new_footer_area {
-    background: #fbfbfd;
+    background: #ecdfd1;
 }
 
 
 .new_footer_top {
     padding: 120px 0px 270px;
     position: relative;
-      overflow-x: hidden;
+    overflow-x: hidden;
 }
 .new_footer_area .footer_bottom {
     padding-top: 5px;
@@ -212,7 +314,7 @@ body {
     font-size: 14px;
     font-weight: 300;
     line-height: 20px;
-    color: #7f88a6;
+    color: #3d251e;
     padding: 27px 0px;
 }
 .new_footer_top .company_widget p {
@@ -228,12 +330,12 @@ body {
 }
 .btn_get_two:hover {
     background: transparent;
-    color: #5e2ced;
+    color: #3d251e;
 }
 .btn_get:hover {
     color: #fff;
-    background: #6754e2;
-    border-color: #6754e2;
+    background: #3d251e;
+    border-color: #3d251e;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -242,10 +344,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     outline: none;
 }
 
-
-
 .new_footer_top .f_widget.about-widget .f_list li a:hover {
-    color: #5e2ced;
+    color: #3d251e;
 }
 .new_footer_top .f_widget.about-widget .f_list li {
     margin-bottom: 11px;
@@ -297,20 +397,20 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 .btn_get_two {
     -webkit-box-shadow: none;
     box-shadow: none;
-    background: #5e2ced;
-    border-color: #5e2ced;
+    background: #3d251e;
+    border-color: #3d251e;
     color: #fff;
 }
 
 .btn_get_two:hover {
     background: transparent;
-    color: #5e2ced;
+    color: #3d251e;
 }
 
 .new_footer_top .f_social_icon a:hover {
-    background: #5e2ced;
-    border-color: #5e2ced;
-  color:white;
+    background: #3d251e;
+    border-color: #3d251e;
+    color:white;
 }
 .new_footer_top .f_social_icon a + a {
     margin-left: 4px;
@@ -345,7 +445,7 @@ h1, h2, h3, h4, h5, h6 {
     background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
     width: 330px;
     height: 105px;
-  background-size:100%;
+    background-size:100%;
     position: absolute;
     bottom: 0;
     left: 30%;
@@ -357,7 +457,7 @@ h1, h2, h3, h4, h5, h6 {
     background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
     width: 88px;
     height: 100px;
-  background-size:100%;
+    background-size:100%;
     bottom: 0;
     left: 38%;
     position: absolute;
@@ -370,34 +470,73 @@ h1, h2, h3, h4, h5, h6 {
 	margin: auto;
 	width: 50%;
 	padding-bottom: 15px;
-  }
+}
 
 @-moz-keyframes myfirst {
-  0% {
+0% {
     left: -25%;
-  }
-  100% {
+}
+100% {
     left: 100%;
-  }
+}
 }
 
 @-webkit-keyframes myfirst {
-  0% {
+0% {
     left: -25%;
-  }
-  100% {
+}
+100% {
     left: 100%;
-  }
+}
 }
 
 @keyframes myfirst {
-  0% {
+0% {
     left: -25%;
-  }
-  100% {
+}
+100% {
     left: 100%;
-  }
+}
 }
 
+.book-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
+.book-img {
+    width: 100px;
+    height: auto;
+}
 
+.book-info {
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: red;
+    }
+
+.discount-line {
+    width: 100%;
+    height: 2px;
+    background-color: green;
+    margin: 5px 0;
+}
+
+.new-price {
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    animation: glow 0.3s infinite alternate;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00ff00; }
+    100% { text-shadow: 0 0 15px #00ff00; }
+}

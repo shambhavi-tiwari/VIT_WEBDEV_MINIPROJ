@@ -11,12 +11,163 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../style.css">
     <title>BookTown Products</title>
+    <style>
+        /* Carousel Styling */
+        .book-carousel {
+            margin-top: 120px; /* Adjust based on your header height */
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .book-carousel .carousel-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #3d251e;
+            text-align: center;
+        }
+        
+        .book-scroll-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 0 15px;
+        }
+        
+        .book-item {
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 15px;
+        }
+        
+        .book-item:last-child {
+            border-bottom: none;
+        }
+        
+        .book-image-container {
+            flex: 0 0 200px;
+            margin-right: 20px;
+        }
+        
+        .book-image {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .book-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            height: auto;
+            overflow: visible;
+        }
+        
+        .book-description {
+            margin-bottom: 15px;
+            color: #6c757d;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .new-price {
+            color: #556B2F; /* Olive green */
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .book-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        @media (min-width: 576px) {
+            .book-actions {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+        }
+        
+        .favorite-btn, .buy-btn {
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .favorite-btn {
+            color: #6c757d;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        
+        .favorite-btn.active {
+            color: #dc3545; /* Red when active */
+        }
+        
+        .favorite-btn:hover {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        
+        .buy-btn {
+            color: #fff;
+            background-color: #556B2F; /* Olive green */
+        }
+        
+        .buy-btn:hover {
+            background-color: #4c6128; /* Darker olive green */
+        }
+        
+        /* Custom scrollbar */
+        .book-scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .book-scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .book-scroll-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        
+        .book-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
 </head>
 
 <body>
     <header class="main-header fixed-top bg-light">
         <section
-            class="row-1 d-flex flex-wrap-reverse flex-sm-nowrap justify-content-between align-content-center align-items-center py-4">
+            class="row-1 d-flex  flex-wrap-reverse flex-sm-nowrap justify-content-between align-content-center align-items-center py-4">
             <ul class="second-navbar-bi-list-clicked nav-bar list-unstyled position-absolute d-flex flex-column w-100">
                 <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center w-100">
                     <a href="../LinkedHTMLs/self-dev-index.html" role="button"
@@ -34,11 +185,6 @@
                         rel="noopener noreferrer">Novels</a>
                 </li>
                 <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center w-100">
-                    <a href="../MainPage/index.html" role="button"
-                        class="w-100 h-100 d-inline-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
-                        rel="noopener noreferrer">Newest Books</a>
-                </li>
-                <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center w-100">
                     <a href="../LinkedHTMLs/best.html" role="button"
                         class="w-100 h-100 d-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
                         rel="noopener noreferrer">Best Of BookTown</a>
@@ -53,7 +199,7 @@
                 <img class="logo-name w-50 img-fluid" src="../../IMG/deafults/logo-name.svg"
                     alt="logo and name of website" />
             </a>
-            <a class="d-none d-sm-block d-md-none me-4 pb-1" href="../Home-Page/index.html" target="_blank">
+            <a class="d-none d-sm-block d-md-none me-4 pb-1" href="../../Home-Page/index.html" target="_blank">
                 <i role="button" class="bi bi-house-door-fill text-danger fs-32 ps-2">
                 </i>
             </a>
@@ -66,26 +212,22 @@
                 </div>
             </nav>
             <div class="personal-profile d-flex gap-3 align-items-center justify-content-center me-5">
-                <a href="../Home-Page/index.html" target="_blank">
+                <a href="../../Home-Page/index.html" target="_blank">
                     <i role="button" class="bi bi-house-door-fill text-danger fs-32 ps-2 d-block d-sm-none">
                     </i>
                 </a>
-                <span onclick="window.open('http://127.0.0.1:5500/Cart/index.html','_self','resizable=yes')">
-                    <span class="icon-container">
-                        <!-- SVG Icon -->
-                        <svg class="bi bi-bag-fill" xmlns="http://www.w3.org/2000/svg" fill="rgba(var(--bs-danger-rgb),var(--bs-bg-opacity))" viewBox="0 0 16 16">
+
+                <a class="link" href="../../Cart/index.html" target="_blank" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-outline-danger">
+                        <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-bag-fill" viewBox="0 0 16 16">
                             <path
                                 d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z">
                             </path>
                         </svg>
-                
-                        <!-- Badge -->
-                        <span id="cartCount">0</span>
-                    </span>
-                    <button type="button" class="btn btn-outline-danger">
                         Purchase
                     </button>
-                </span>
+                </a>
                 <a class="link" href="../../SignUpModal/index.html" target="_blank" rel="noopener noreferrer">
                     <button type="button" class="btn btn-outline-danger">
                         <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -101,86 +243,145 @@
         <section class="row-2">
             <ul class="nav-bar list-unstyled d-none d-sm-flex">
                 <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center">
-                    <a href="../LinkedHTMLs/self-dev-index.html" role="button"
-                        class="w-100 h-100 d-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
-                        rel="noopener noreferrer">Self-Development</a>
+                  <a href="./self-dev-index.html" role="button" class="w-100 h-100 d-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
+                   rel="noopener noreferrer">Self-Development</a>
                 </li>
                 <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center">
-                    <a href="../LinkedHTMLs/philosophy-index.html" role="button"
-                        class="w-100 h-100 d-inline-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
-                        rel="noopener noreferrer">Philosophy</a>
+                  <a href="./philosophy-index.html" role="button" class="w-100 h-100 d-inline-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
+                   rel="noopener noreferrer">Philosophy</a>
                 </li>
                 <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center">
-                    <a href="../LinkedHTMLs/novels-index.html" role="button"
-                        class="w-100 h-100 d-inline-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
-                        rel="noopener noreferrer">Novels</a>
+                  <a href="./novels-index.html" role="button" class="w-100 h-100 d-inline-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
+                   rel="noopener noreferrer">Novels</a>
                 </li>
                 <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center">
-                    <a href="../MainPage/index.html" role="button"
-                        class="w-100 h-100 d-inline-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
-                        rel="noopener noreferrer">Newest Books</a>
+                  <a href="../MainPage/index.html" role="button" class="w-100 h-100 d-inline-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
+                   rel="noopener noreferrer">Newest Books</a>
                 </li>
                 <li id="categorieSelector" class="categorie flex-grow-1 fs-18 text-center">
-                    <a href="../LinkedHTMLs/best.html" role="button"
-                        class="w-100 h-100 d-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
-                        rel="noopener noreferrer">Best Of BookTown</a>
+                  <a href="./best.html" role="button" class="w-100 h-100 d-block spinner-border-sm bg-danger text-light border border-1 border-warning border-opacity-10"
+                   rel="noopener noreferrer">Best Of BookTown</a>
                 </li>
-            </ul>
-        </section>
+              </ul>
+          </section>
     </header>
 
-    <main
-        class="main-body d-flex flex-column align-items-center justify-content-center text-center gap-4 pb-5 pt-5 container">
-        <div class="dropdown align-self-start ms-5 ps-5">
-            <button class="btn btn-outline-danger dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Sorted by <span class="sorted-by"> : Newest Books</span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a id="dropdownItem" class="dropdown-item" href="#">Cheapest to most expensive</a></li>
-                <li><a id="dropdownItem" class="dropdown-item" href="#">Most expensive to Cheapest</a></li>
-                <li><a id="dropdownItem" class="dropdown-item" href="#">Newest Books</a></li>
-                <li><a id="dropdownItem" class="dropdown-item" href="#">Best Of BookTown</a></li>
-            </ul>
+<!-- Vertical Scrolling Book Showcase -->
+<section class="book-carousel container">
+    <h2 class="carousel-title">Bestsellers @ Books and Pages</h2>
+    <div class="book-scroll-container">
+        <!-- Book 1 -->
+        <div class="book-item">
+            <div class="book-image-container">
+                <img src="../../IMG/books/best1.jpg" alt="The Silent Patient" class="book-image">
+            </div>
+            <div class="book-details">
+                <div>
+                    <h5 class="book-title">The Silent Patient</h5>
+                    <p class="book-description">A psychological thriller about a woman's act of violence against her husband—and of the therapist obsessed with uncovering her motive.</p>
+                    <p class="old-price">$24.99</p>
+                    <p class="new-price">$18.75</p>
+                </div>
+                <div class="book-actions">
+                    <button class="favorite-btn">
+                        <i class="bi bi-heart"></i> Add to Favorites
+                    </button>
+                    <button class="buy-btn">
+                        <i class="bi bi-bag"></i> Buy Now
+                    </button>
+                </div>
+            </div>
         </div>
-        <div id="thumb"
-            class="main d-flex flex-column flex-sm-row mx-auto flex-wrap gap-5 text-center justify-content-sm-evenly align-items-center">
+        
+        <!-- Book 2 -->
+        <div class="book-item">
+            <div class="book-image-container">
+                <img src="../../IMG/books/best2.jpg" alt="Atomic Habits" class="book-image">
+            </div>
+            <div class="book-details">
+                <div>
+                    <h5 class="book-title">Atomic Habits</h5>
+                    <p class="book-description">An easy and proven way to build good habits and break bad ones with practical strategies to transform your life.</p>
+                    <p class="old-price">$21.99</p>
+                    <p class="new-price">$16.49</p>
+                </div>
+                <div class="book-actions">
+                    <button class="favorite-btn">
+                        <i class="bi bi-heart"></i> Add to Favorites
+                    </button>
+                    <button class="buy-btn">
+                        <i class="bi bi-bag"></i> Buy Now
+                    </button>
+                </div>
+            </div>
         </div>
-    </main>
-
-    <footer class="bg-light text-center text-white mt-5">
-        <div class="container p-4 pb-0 border-top border-1 border-danger border-opacity-25">
-            <section class="mb-4">
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;"
-                    href="https://twitter.com/ettehadnejad" role="button"><i class="bi bi-twitter"></i></a>
-
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39;"
-                    href="https://mail.google.com/mail/u/0/?hl=fr#search/mahdi.ettehad85%40gmail.com" role="button"><i
-                        class="bi bi-google"></i></a>
-
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac;"
-                    href="https://www.instagram.com/mahdi__ettehad/" role="button"><i class="bi bi-instagram"></i></a>
-
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca;"
-                    href="https://www.linkedin.com/in/mahdi-ettehadnejad-86a0b323a/" role="button"><i
-                        class="bi bi-linkedin"></i></a>
-                <a class="btn btn-primary btn-floating m-1" style="background-color: #333333;"
-                    href="https://github.com/mahdi-Eth" role="button"><i class="bi bi-github"></i></a>
-            </section>
+        
+        <!-- Book 3 -->
+        <div class="book-item">
+            <div class="book-image-container">
+                <img src="../../IMG/books/best3.jpg" alt="The Psychology of Money" class="book-image">
+            </div>
+            <div class="book-details">
+                <div>
+                    <h5 class="book-title">The Psychology of Money</h5>
+                    <p class="book-description">Timeless lessons on wealth, greed, and happiness exploring how money works in real life.</p>
+                    <p class="old-price">$19.99</p>
+                    <p class="new-price">$14.99</p>
+                </div>
+                <div class="book-actions">
+                    <button class="favorite-btn">
+                        <i class="bi bi-heart"></i> Add to Favorites
+                    </button>
+                    <button class="buy-btn">
+                        <i class="bi bi-bag"></i> Buy Now
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="text-center p-3 fs-18" style="background-color: rgba(0, 0, 0, 0.2);">
-            Creator :
-            <a class="text-white" href="https://github.com/mahdi-Eth">Mahdi Ettehadnejad</a>
-        </div>
-    </footer>
+    </div>
+</section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
-    <script src="../cartHandler.js"></script>
     <script type="module" src="../defaultScript.js"></script>
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="./best.js"></script>
+    
+    <!-- Add this script for the favorite button functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all favorite buttons
+            const favoriteButtons = document.querySelectorAll('.favorite-btn');
+            
+            // Add click event listener to each button
+            favoriteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle active class
+                    this.classList.toggle('active');
+                    
+                    // Change icon and text based on state
+                    const icon = this.querySelector('i');
+                    if (this.classList.contains('active')) {
+                        icon.classList.remove('bi-heart');
+                        icon.classList.add('bi-heart-fill');
+                        this.innerHTML = icon.outerHTML + ' Added to Favorites';
+                    } else {
+                        icon.classList.remove('bi-heart-fill');
+                        icon.classList.add('bi-heart');
+                        this.innerHTML = icon.outerHTML + ' Add to Favorites';
+                    }
+                });
+            });
+            
+            // Buy Now button click event
+            const buyButtons = document.querySelectorAll('.buy-btn');
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Item added to cart!');
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>

@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ecdfd1;
+  --foreground: #3d251e;
+  --primary: #3d251e;
+  --primary-foreground: #ffffff;
+  --secondary: #5a3a2e;
+  --secondary-foreground: #ffffff;
+  --accent: #556b2f;
+  --accent-foreground: #ffffff;
+  --muted: #f1e7dd;
+  --muted-foreground: #6c6055;
+  --card: #ffffff;
+  --card-foreground: #3d251e;
+}
+
+.dark {
+  --background: #1c1917;
+  --foreground: #f5f5f4;
+  --primary: #8c6d62;
+  --primary-foreground: #ffffff;
+  --secondary: #a18072;
+  --secondary-foreground: #ffffff;
+  --accent: #7d9649;
+  --accent-foreground: #ffffff;
+  --muted: #2c2524;
+  --muted-foreground: #a8a29e;
+  --card: #292524;
+  --card-foreground: #f5f5f4;
+}
+
+body {
+  font-family: "Alegreya", serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Alegreya", serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .price-tag {
+    @apply relative inline-block;
+  }
+
+  .price-tag::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-accent;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+
+  .price-tag:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
